@@ -11,25 +11,14 @@
 // Обобщенный контейнер
 typedef struct Container {}<> Container;
 
-
 //==============================================================================
 // Функции для работы с контейнером
 
 // Начальная инициализация контейнера
 void InitContainer<Container* container>();
 
-// Добавление значения в хвост контейнера
-void AppendContainer<Container* container>(Value* value);
-
-// Вывод элементов контейнера в указанный файл, который
-// должен быть предварително открыт
-void OutContainerValues<struct Container* container>(FILE* file);
-
 // Удаление всех элементов из контейнера (очистка от данных)
-void EmptyContainer<Container* container>();
-
-// Вывод значения указанного элемента, из данного узла
-// void OutCurrentContainerValue(FILE* file, Value* value);
+void ClearContainer<Container* container>();
 
 //------------------------------------------------------------------------------
 // Дополнительно добавлены функции итератора из Design Patterns
