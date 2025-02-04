@@ -1,6 +1,2 @@
 test.c
-*.out
-out
-container/
-array/container-array.c
-*container*
+*out*
