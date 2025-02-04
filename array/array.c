@@ -5,7 +5,7 @@
 #include "array.h"
 
 void InitArray(Array* array, const int size) {
-  array->len = 0;
+  array->len = size;
   array->current = -1;
   for(int i = 0; i < maxLen; ++i) {
     array->data[i] = NULL;
@@ -15,10 +15,10 @@ _Bool ArrayEmpty(Array* array){
     return array->len == 0;
 }
 
-Value* ArrayAt(Array* array, int index){
+Value** ArrayAt(Array* array, int index){
     if(index >= array->len)
         return NULL;
-    return array->data[index];
+    return &array->data[index];
 }
 
 Value* ArrayFront(Array* array){
@@ -33,7 +33,7 @@ Value* ArrayBack(Array* array){
     return array->data[array->len - 1];
 }
 
-Value* ArrayData(Array* array){
+Value** ArrayData(Array* array){
     return array->data;
 }
 

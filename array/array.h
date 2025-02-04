@@ -16,13 +16,13 @@ typedef struct Array {
 
 void InitArray(Array* array, const int size);
 
-Value* ArrayAt(Array* array, int value);
+Value** ArrayAt(Array* array, int value);
 
 Value* ArrayFront(Array* array);
 
 Value* ArrayBack(Array* array);
 
-Value* ArrayData(Array* array);
+Value** ArrayData(Array* array);
 
 // �������� ���� ��������� ������ (������� �� ������)
 void ClearArray(Array* array);
