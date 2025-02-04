@@ -4,10 +4,13 @@
 #include <stdlib.h>
 #include "array.h"
 
-void InitArray(Array* array, const int size) {
+void InitArray(Array* array, uint size) {
   array->len = size;
-  array->current = -1;
-  for(int i = 0; i < maxLen; ++i) {
+  // sixeof(void*) equals memory for Value*
+  array->data = (Value**) malloc(size * sizeof(void*));
+  if(array->data == NULL)
+    return;
+  for(int i = 0; i < size; ++i) {
     array->data[i] = NULL;
   }
 }
