@@ -31,10 +31,9 @@ int main(){
     }
 
     // Printing array
-    for(uint i = 0; i < arr.len; ++i){
-        struct Value.Int** elem2 = ArrayAt(&arr, i);
+    for(Value** i = ArrayBegin(&arr); i != ArrayEnd(&arr); ArrayIteratorNext(&i)){
         struct Value.Int* b = create_spec(Value.Int);
-        b  = *elem2;
+        b  = *i;
         printf("%d ", b->@x); // 0 1 2 3 4 5 6 7 8 9 
     }
 

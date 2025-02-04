@@ -29,4 +29,13 @@ Value** ArrayData(Array* array);
 // Clear array;
 void ClearArray(Array* array);
 
+// Iterator to first element
+Value** ArrayBegin(Array* array);
+
+// Iterator to next element
+void ArrayIteratorNext(Value*** iter);
+
+// Iterator to end of array
+Value** ArrayEnd(Array* array);
+
 #endif // __array__

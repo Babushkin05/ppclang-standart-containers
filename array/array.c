@@ -55,4 +55,27 @@ void ClearArray(Array* array) {
   array->len = 0;
 }
 
+// Iterator to first element
+Value** ArrayBegin(Array* array){
+  if(ArrayEmpty(array)) {
+    return NULL;
+  } else {
+    return &(array->data[0]);
+  }
+}
+
+// Iterator to next element
+void ArrayIteratorNext(Value*** iter){
+  ++(*iter);
+}
+
+// Iterator to end of array
+Value** ArrayEnd(Array* array){
+  if(ArrayEmpty(array)) {
+    return NULL;
+  } else {
+    return &(array->data[array->len - 1]);
+  }
+}
+
 
