@@ -14,6 +14,9 @@ typedef struct Array {
 // Initialisation
 void InitArray(Array* array, uint size);
 
+// Check is array empty
+_Bool ArrayEmpty(Array* array);
+
 // Analog of array[index]
 Value** ArrayAt(Array* array, int index);
 
