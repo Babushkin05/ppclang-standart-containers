@@ -7,32 +7,27 @@
 #include <stdio.h>
 #include "../value/value.h"
 
-//------------------------------------------------------------------------------
-// Обобщенный контейнер
+// Structure of Container generalization
 typedef struct Container {}<> Container;
 
 //==============================================================================
-// Функции для работы с контейнером
+// Functions for Container usability
 
-// Начальная инициализация контейнера
 void InitContainer<Container* container>();
 
-// Удаление всех элементов из контейнера (очистка от данных)
+// Clear data from container
 void ClearContainer<Container* container>();
 
 //------------------------------------------------------------------------------
-// Дополнительно добавлены функции итератора из Design Patterns
+// Iterators
 
-// Указатель на значение первого элемента контейнера
+// Pointer to first elem
 void First<Container* container>();
 
-// Перевод указателя на значение следующего элемента контейнера
+// Move Pointer to nex element
 void Next<Container* container>();
 
-// Проверка выхода за последний элемент контейнера
+// Checking for Exit to Last Element of Container
 _Bool IsDone<Container* container>();
-
-// Указатель на значение текущего элемента контейнера
-Value* CurrentItem<Container* container>();
 
 #endif // __container_
