@@ -1,6 +1,7 @@
 #ifndef __stack__
 #define __stack__
 
+#include "../value/value.c"
 
 typedef struct Stack {
     int capasity;
