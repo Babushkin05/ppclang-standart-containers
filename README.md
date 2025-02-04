@@ -11,7 +11,6 @@
 ```c
 #include <stdio.h>
 #include "array/array.c"
-#include "container/container.c"
 
 // Create specialisation for Value
 typedef struct Int {int x;} Int;
