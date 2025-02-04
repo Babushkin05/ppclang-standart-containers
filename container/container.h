@@ -22,12 +22,12 @@ void ClearContainer<Container* container>();
 // Iterators
 
 // Pointer to first elem
-void First<Container* container>();
+void Begin<Container* container>();
 
 // Move Pointer to nex element
 void Next<Container* container>();
 
 // Checking for Exit to Last Element of Container
-_Bool IsDone<Container* container>();
+_Bool End<Container* container>();
 
 #endif // __container_
