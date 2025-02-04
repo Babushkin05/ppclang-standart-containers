@@ -4,6 +4,8 @@
 
 - Array
 
+- Stack
+
 ## Usage
 
 ### Array
@@ -40,4 +42,38 @@ int main(){
     return 0;
 }
 
+```
+
+### Stack
+
+```c
+#include <stdio.h>
+#include "stack/stack.c"
+
+// Create specialisation for Value
+typedef struct Int {int x;} Int;
+Value + <Int;>;
+
+int main(){
+    
+    // Stack Initialisation
+    Stack s;
+    InitStack(&s);
+
+    // Filling stack
+    for(uint i = 0; i < 15; ++i){
+        struct Value.Int* a = create_spec(Value.Int);
+        a->@x = i; 
+        StackPush(&s, a);
+    }
+
+    // Printing stack data
+    while(!StackEmpty(&s)){
+        struct Value.Int* a = create_spec(Value.Int);
+        a = StackPop(&s);
+        printf("%d ", a->@x); // 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
+    }
+
+    return 0;
+}
 ```
