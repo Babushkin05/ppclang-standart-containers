@@ -3,3 +3,4 @@ test.c
 build
 bin
 test*
+run-testfile
