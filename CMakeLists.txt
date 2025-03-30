@@ -16,6 +16,7 @@ set(SOURCE_FILES
     container/container.h
 
     #sources
+    test.c
     value/value.c
     array/array.c
     stack/stack.c
@@ -23,5 +24,4 @@ set(SOURCE_FILES
     array/array-container.c
 )
 
-add_executable(ppscl ${SOURCE_FILES})
-add_executable(test test.c)
+add_executable(test_program test.c ${SOURCE_FILES})
