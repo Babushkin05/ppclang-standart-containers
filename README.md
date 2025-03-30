@@ -19,26 +19,25 @@ typedef struct Int {int x;} Int;
 Value + <Int;>;
 
 int main(){
-    
-    // Array Initialisation
-    Array arr;
-    InitArray(&arr, 10);
+
+    struct Container.Array arr;
+    InitContainerWithSize<&arr>(10);
 
     // Setting numbers
-    for(uint i = 0; i < arr.len; ++i){
-        struct Value.Int** elem = ArrayAt(&arr, i);
+    for(uint i = 0; i < arr@len; ++i){
+        struct Value.Int** elem = ArrayAt<&arr>(i);
         struct Value.Int* a = create_spec(Value.Int);
         a->@x = i;
         *elem = a;
     }
 
     // Printing array
-    for(Value** i = ArrayBegin(&arr); i != ArrayEnd(&arr); ArrayIteratorNext(&i)){
+    for(Value** i = BeginContainer<&arr>(); i != EndContainer<&arr>(); NextIteratorContainer<&arr>(&i)){
         struct Value.Int* b = create_spec(Value.Int);
         b  = *i;
-        printf("%d ", b->@x); // 0 1 2 3 4 5 6 7 8 9 
+        printf("%d \n", b->@x); // 0 1 2 3 4 5 6 7 8 9 
     }
-
+    printf("test");
     return 0;
 }
 
