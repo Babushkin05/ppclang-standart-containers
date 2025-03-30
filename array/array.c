@@ -3,7 +3,7 @@
 #include "array.h"
 
 // Array initialisation
-void InitArray(Array* array, uint size) {
+void InitArray(Array* array, size_t size) {
   array->len = size;
   // sixeof(void*) equals memory for Value*
   array->data = (Value**) malloc(size * sizeof(void*));
@@ -72,7 +72,7 @@ Value** ArrayEnd(Array* array){
   if(ArrayEmpty(array)) {
     return NULL;
   } else {
-    return &(array->data[array->len - 1]);
+    return &(array->data[array->len - 1]) + 1;
   }
 }
 

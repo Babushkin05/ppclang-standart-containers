@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include "../value/value.h"
+#include "../container/container.h"
 
 // Structure of Array.
 typedef struct Array {
@@ -12,7 +13,7 @@ typedef struct Array {
 } Array;
 
 // Initialisation
-void InitArray(Array* array, uint size);
+void InitArray(Array* array, size_t size);
 
 // Check is array empty
 _Bool ArrayEmpty(Array* array);
