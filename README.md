@@ -25,7 +25,7 @@ int main(){
 
     // Setting numbers
     for(uint i = 0; i < arr@len; ++i){
-        struct Value.Int** elem = ArrayAt<&arr>(i);
+        struct Value.Int** elem = ContainerAt<&arr>(i);
         struct Value.Int* a = create_spec(Value.Int);
         a->@x = i;
         *elem = a;

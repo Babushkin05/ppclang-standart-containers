@@ -22,7 +22,7 @@ _Bool EmptyContainer<Container* container>();
 // Iterators
 
 // Iterator for index (only for RandomAccesContainers)
-Value** ArrayAt<Container* container>(int index);
+Value** ContainerAt<Container* container>(int index);
 
 // Iterator to first element
 Value** BeginContainer<Container* container>();

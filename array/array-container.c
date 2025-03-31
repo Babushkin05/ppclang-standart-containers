@@ -21,7 +21,7 @@ _Bool EmptyContainer<Container.Array* container>() {
 // --------------------------------------------
 // Iterators
 
-Value** ArrayAt<Container.Array* array>(int index){
+Value** ContainerAt<Container.Array* array>(int index){
     if(index >= array->@len)
         return NULL;
     return &array->@data[index];
