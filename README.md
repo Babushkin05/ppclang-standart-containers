@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include "array/array.c"
 
+Container + <Array;>;
+
 // Create specialisation for Value
 typedef struct Int {int x;} Int;
 Value + <Int;>;
@@ -49,30 +51,31 @@ int main(){
 #include <stdio.h>
 #include "stack/stack.c"
 
+Container + <Stack;>;
+
 // Create specialisation for Value
 typedef struct Int {int x;} Int;
 Value + <Int;>;
 
 int main(){
-    
-    // Stack Initialisation
-    Stack s;
-    InitStack(&s);
 
-    // Filling stack
+    struct Container.Stack s;
+    InitContainer<&s>();
+
+    // Setting numbers
     for(uint i = 0; i < 15; ++i){
         struct Value.Int* a = create_spec(Value.Int);
-        a->@x = i; 
-        StackPush(&s, a);
+        a->@x = i;
+        PushContainer<&s>(a);
     }
 
-    // Printing stack data
-    while(!StackEmpty(&s)){
+    // Printing array
+    while(!EmptyContainer<&s>()){
         struct Value.Int* a = create_spec(Value.Int);
-        a = StackPop(&s);
-        printf("%d ", a->@x); // 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
+        a  = PopContainer<&s>();
+        printf("%d \n", a->@x); // 0 1 2 3 4 5 6 7 8 9 
     }
-
+    printf("test");
     return 0;
 }
 ```
