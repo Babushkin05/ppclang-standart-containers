@@ -3,8 +3,6 @@
 
 Container + <Array;>;
 
-void InitContainer<Container.Array* container>() { }
-
 void InitContainerWithSize<Container.Array* container>(size_t size) {
     Array* array = &(container->@);
     InitArray(array, size);
