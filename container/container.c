@@ -12,6 +12,13 @@ void ClearContainer<Container* container>() {}
 // Checking is container empty
 _Bool EmptyContainer<Container* container>() {}
 
+void PushContainer<Container* container>(Value* val) {}
+
+Value* PopContainer<Container* container>() {}
+
+Value* TopContainer<Container* container>() {}
+
+
 // --------------------------------------------
 // Iterators
 
