@@ -22,6 +22,7 @@ set(SOURCE_FILES
     stack/stack.c
     container/container.c
     array/array-container.c
+    stack/stack-container.c
 )
 
 add_executable(test_program test.c ${SOURCE_FILES})
