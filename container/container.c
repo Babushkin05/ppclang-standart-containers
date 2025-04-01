@@ -14,7 +14,11 @@ _Bool EmptyContainer<Container* container>() {}
 
 void PushContainer<Container* container>(Value* val) {}
 
+void PushBackContainer<Container* container>(Value* val) {}
+
 Value* PopContainer<Container* container>() {}
+
+Value* PopBackContainer<Container* container>() {}
 
 Value* TopContainer<Container* container>() {}
 
