@@ -13,6 +13,7 @@ set(SOURCE_FILES
     value/value.h
     array/array.h
     stack/stack.h
+    vector/vector.h
     container/container.h
 
     #sources
@@ -20,9 +21,11 @@ set(SOURCE_FILES
     value/value.c
     array/array.c
     stack/stack.c
+    vector/vector.c
     container/container.c
     array/array-container.c
     stack/stack-container.c
+    vector/vector-container.c
 )
 
 add_executable(test_program test.c ${SOURCE_FILES})
