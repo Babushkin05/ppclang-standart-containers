@@ -26,7 +26,7 @@ void ClearVector(Vector* vector);
 
 void VectorPushBack(Vector* vector, Value* value);
 
-void VectorPopBack(Vector* vector, Value* value);
+void VectorPopBack(Vector* vector);
 
 Value** VectorBegin(Vector* vector);
 

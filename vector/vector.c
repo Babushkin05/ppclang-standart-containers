@@ -32,7 +32,7 @@ void VectorPushBack(Vector* vector, Value* value) {
     vector->len++;
 }
 
-void VectorPopBack(Vector* vector, Value* value) {
+void VectorPopBack(Vector* vector) {
     if(VectorEmpty(vector))
         return;
     if(vector->data[vector->len - 1] != NULL)
