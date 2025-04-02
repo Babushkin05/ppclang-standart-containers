@@ -12,7 +12,8 @@
 
 ```c
 #include <stdio.h>
-#include "array/array.c"
+#include "array/array.h"
+#include "container/container.h"
 
 Container + <Array;>;
 
@@ -49,7 +50,8 @@ int main(){
 
 ```c
 #include <stdio.h>
-#include "stack/stack.c"
+#include "stack/stack.h"
+#include "container/container.h"
 
 Container + <Stack;>;
 
@@ -76,6 +78,41 @@ int main(){
         printf("%d \n", a->@x); // 0 1 2 3 4 5 6 7 8 9 
     }
     printf("test");
+    return 0;
+}
+```
+
+### Vector
+
+```c
+#include <stdio.h>
+#include "vector/vector.h"
+#include "container/container.h"
+
+Container + <Vector;>;
+
+// Create specialisation for Value
+typedef struct Int {int x;} Int;
+Value + <Int;>;
+
+int main(){
+
+    struct Container.Vector v;
+    InitContainerWithSize<&v>(0);
+
+    // Setting numbers
+    for(uint i = 0; i < 15; ++i){
+        struct Value.Int* a = create_spec(Value.Int);
+        a->@x = i;
+        PushBackContainer<&v>(a);
+    }
+
+    // Printing array
+    for(Value** iter = BeginContainer<&v>(); iter != EndContainer<&v>(); NextIteratorContainer<&v>(&iter)) {
+        struct Value.Int* a = create_spec(Value.Int);
+        a = *iter;
+        printf("%d ", a->@x); 
+    }
     return 0;
 }
 ```
