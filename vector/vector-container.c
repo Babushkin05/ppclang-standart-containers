@@ -4,49 +4,49 @@
 Container + <Vector;>;
 
 void InitContainerWithSize<Container.Vector* container>(size_t size) {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     InitVector(vector, size);
 }
 
 void ClearContainer<Container.Vector* container>() {
     Vector* vector = &(container->@);
-    ClearArray(vector);
+    ClearVector(vector);
 }
 
 _Bool EmptyContainer<Container.Vector* container>() {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     return VectorEmpty(vector);
 }
 
 void PushBackContainer<Container.Vector* container>(Value* val) {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     VectorPushBack(vector, val);
 }
 
 void PopBackContainer<Container.Vector* container>() {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     VectorPopBack(vector);
 }
 
 // --------------------------------------------
 // Iterators
 
-Value** ContainerAt<Container.Vector* vector>(size_t index) {
-    Vector* vector = &(vector->@);
+Value** ContainerAt<Container.Vector* container>(size_t index) {
+    Vector* vector = &(container->@);
     return VectorAt(vector, index);
 }
 
 Value** BeginContainer<Container.Vector* container>() {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     return VectorBegin(vector);
 }
 
 Value** EndContainer<Container.Vector* container>() {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     return VectorEnd(vector);
 }
 
 void NextIteratorContainer<Container.Vector* container>(Value*** iter) {
-    Vector* vector = &(vector->@);
+    Vector* vector = &(container->@);
     VectorIteratorNext(iter);
 }
