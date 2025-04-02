@@ -5,33 +5,33 @@
 #include "../value/value.h"
 
 typedef struct Vector {
-    size_t len;
-    size_t cap;
-    Value** data;
+  size_t len;
+  size_t cap;
+  Value **data;
 } Vector;
 
-void InitVector(Vector* vector, size_t size);
+void InitVector(Vector *vector, size_t size);
 
-_Bool VectorEmpty(Vector* vector);
+_Bool VectorEmpty(Vector *vector);
 
-Value** VectorAt(Vector* vector, size_t index);
+Value **VectorAt(Vector *vector, size_t index);
 
-Value* VectorFront(Vector* vector);
+Value *VectorFront(Vector *vector);
 
-Value* VectorBack(Vector* vector);
+Value *VectorBack(Vector *vector);
 
-Value** VectorData(Vector* vector);
+Value **VectorData(Vector *vector);
 
-void ClearVector(Vector* vector);
+void ClearVector(Vector *vector);
 
-void VectorPushBack(Vector* vector, Value* value);
+void VectorPushBack(Vector *vector, Value *value);
 
-void VectorPopBack(Vector* vector);
+void VectorPopBack(Vector *vector);
 
-Value** VectorBegin(Vector* vector);
+Value **VectorBegin(Vector *vector);
 
-void VectorIteratorNext(Value*** iter);
+void VectorIteratorNext(Value ***iter);
 
-Value** VectorEnd(Vector* vector);
+Value **VectorEnd(Vector *vector);
 
 #endif // __vector__
