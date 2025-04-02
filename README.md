@@ -6,6 +6,8 @@
 
 - Stack
 
+- Vector
+
 ## Usage
 
 ### Array
