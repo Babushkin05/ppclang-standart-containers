@@ -34,9 +34,9 @@ void ListPopFront(List* list);
 
 void ListPushFront(List* list, Value* val);
 
-void ListInsert(Node* node, Value* val);
+void ListInsert(List* list, Node* node, Value* val);
 
-void ListErase(Node* node);
+void ListErase(List* list, Node* node);
 
 void ListMerge(List* left, List* right);
 
