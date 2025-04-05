@@ -20,8 +20,8 @@ void ListClear(List *list) {
   Node *current = list->head;
   while (current) {
     Node *next = current->next;
-    free(current->val); // Free the value
-    free(current);      // Free the node
+    free(current->val); 
+    free(current);      
     current = next;
   }
 
