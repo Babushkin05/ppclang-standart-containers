@@ -21,6 +21,8 @@ void InitList(List *list);
 
 _Bool ListEmpty(List *list);
 
+void ListClear(List *list);
+
 Value *ListFront(List *list);
 
 Value *ListBack(List *list);

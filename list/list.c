@@ -12,6 +12,24 @@ void InitList(List *list) {
 // Check if list is empty
 _Bool ListEmpty(List *list) { return list->size == 0; }
 
+// Clear the list and free all memory
+void ListClear(List *list) {
+  if (!list)
+    return;
+
+  Node *current = list->head;
+  while (current) {
+    Node *next = current->next;
+    free(current->val); // Free the value
+    free(current);      // Free the node
+    current = next;
+  }
+
+  list->head = NULL;
+  list->tail = NULL;
+  list->size = 0;
+}
+
 // Get the first element of the list
 Value *ListFront(List *list) {
   if (ListEmpty(list)) {
@@ -89,8 +107,8 @@ void ListPopFront(List *list) {
     list->head->prev = NULL;
   }
 
-  free(toRemove->val); 
-  free(toRemove);      
+  free(toRemove->val);
+  free(toRemove);
   list->size--;
 }
 
@@ -160,8 +178,8 @@ void ListErase(List *list, Node *node) {
     list->tail = node->prev;
   }
 
-  free(node->val); 
-  free(node);    
+  free(node->val);
+  free(node);
   list->size--;
 }
 
