@@ -23,9 +23,13 @@ void PushContainer<Container * container>(Value *val);
 
 void PushBackContainer<Container * container>(Value *val);
 
+void PushFrontContainer<Container * container>(Value *val);
+
 Value *PopContainer<Container * container>();
 
 void PopBackContainer<Container * container>();
+
+void PopFrontContainer<Container * container>();
 
 Value *TopContainer<Container * container>();
 
