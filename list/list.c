@@ -189,31 +189,6 @@ void ListMerge(List *left, List *right) {
   right->size = 0;
 }
 
-// Remove consecutive duplicates from the list
-void ListUnique(List *list) {
-  if (ListEmpty(list) || list->size == 1)
-    return;
-
-  Node *current = list->head;
-  while (current && current->next) {
-    if (Compare(current->val, current->next->val) == 0) {
-      Node *toRemove = current->next;
-      current->next = toRemove->next;
-      if (toRemove->next) {
-        toRemove->next->prev = current;
-      } else {
-        list->tail = current;
-      }
-
-      free(toRemove->val);
-      free(toRemove);
-      list->size--;
-    } else {
-      current = current->next;
-    }
-  }
-}
-
 // Reverse the list
 void ListReverse(List *list) {
   if (ListEmpty(list) || list->size == 1)

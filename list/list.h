@@ -7,15 +7,15 @@
 
 typedef struct Node {
   Value *val;
-  Node *next;
-  Node *prev;
-};
+  struct Node *next;
+  struct Node *prev;
+} Node;
 
 typedef struct List {
   Node *head;
   Node *tail;
   size_t size;
-}
+} List;
 
 void InitList(List *list);
 
@@ -38,8 +38,6 @@ void ListInsert(List *list, Node *node, Value *val);
 void ListErase(List *list, Node *node);
 
 void ListMerge(List *left, List *right);
-
-void ListUnique(List *list);
 
 void ListReverse(List *list);
 
