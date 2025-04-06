@@ -15,6 +15,7 @@ set(SOURCE_FILES
     stack/stack.h
     vector/vector.h
     list/list.h
+    hashset/hashset.h
     container/container.h
 
     #sources
@@ -24,6 +25,7 @@ set(SOURCE_FILES
     stack/stack.c
     vector/vector.c
     list/list.c
+    hashset/hashset.c
     container/container.c
     array/array-container.c
     stack/stack-container.c
