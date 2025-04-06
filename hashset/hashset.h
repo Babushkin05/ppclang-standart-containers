@@ -22,10 +22,10 @@ _Bool HashSetEmpty(HashSet *set);
 
 void HashSetClear(HashSet *set);
 
-void HashSetAdd(HashSet *set, Value *val);
+void HashSetInsert(HashSet *set, Value *val);
 
 void HashSetContains(HashSet *set, Value *val);
 
-void HashSetRemove(HashSet *set, Value *val);
+void HashSetErase(HashSet *set, Value *val);
 
 #endif // __hashset__
