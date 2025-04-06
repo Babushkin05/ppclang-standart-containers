@@ -10,6 +10,8 @@
 
 - List
 
+- HashSet
+
 ## Usage
 
 ### Array
@@ -151,6 +153,34 @@ int main(){
         printf("%d ", a->@x); // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 
         PopFrontContainer<&l>();
     }
+    return 0;
+}
+```
+
+### HashSet
+
+```c
+#include <stdio.h>
+#include "hashset/hashset.h"
+#include "container/container.h"
+Container + <HashSet;>;
+
+// Create specialisation for Value
+typedef struct String {char* str;} String;
+Value + <String;>;
+
+int main(){
+    struct Container.HashSet set;
+    InitContainer<&set>();
+
+    struct Value.String *a = create_spec(Value.String);
+    a->@str = "hello";
+    InsertContainer<&set>(a);
+
+    struct Value.String *b = create_spec(Value.String);
+    b->@str = "world";
+    printf("is 'hello' inside: %d\n is 'world' inside: %d", ContainsContainer<&set>(a), ContainsContainer<&set>(b));
+    
     return 0;
 }
 ```
