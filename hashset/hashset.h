@@ -6,15 +6,15 @@
 #include "../value/value.h"
 
 typedef struct Node {
-    Value *key;
-    struct Node * next;
+  Value *key;
+  struct Node *next;
 } Node;
 
 typedef struct HashSet {
-    Node **buckets;
-    int size;
-    int cap;
-}
+  Node **buckets;
+  int size;
+  int cap;
+} HashSet;
 
 void InitHashSet(Hashset *set);
 
@@ -22,7 +22,7 @@ _Bool HashSetEmpty(HashSet *set);
 
 void HashSetClear(HashSet *set);
 
-void HashSetAdd(HashSet *set, Value* val);
+void HashSetAdd(HashSet *set, Value *val);
 
 void HashSetContains(HashSet *set, Value *val);
 
