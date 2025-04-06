@@ -33,6 +33,10 @@ void PopFrontContainer<Container * container>();
 
 Value *TopContainer<Container * container>();
 
+Value *FrontContainer<Container *container>();
+
+Value *BackContainer<Container *container>();
+
 // --------------------------------------------
 // Iterators
 
