@@ -8,6 +8,8 @@
 
 - Vector
 
+- List
+
 ## Usage
 
 ### Array
@@ -36,11 +38,11 @@ int main(){
         *elem = a;
     }
 
-    // Printing array
+    // Printing 
     for(Value** i = BeginContainer<&arr>(); i != EndContainer<&arr>(); NextIteratorContainer<&arr>(&i)){
-        struct Value.Int* b = create_spec(Value.Int);
-        b  = *i;
-        printf("%d \n", b->@x); // 0 1 2 3 4 5 6 7 8 9 
+        struct Value.Int* a = create_spec(Value.Int);
+        a  = *i;
+        printf("%d \n", a->@x); // 0 1 2 3 4 5 6 7 8 9 
     }
     printf("test");
     return 0;
@@ -73,13 +75,12 @@ int main(){
         PushContainer<&s>(a);
     }
 
-    // Printing array
+    // Printing 
     while(!EmptyContainer<&s>()){
         struct Value.Int* a = create_spec(Value.Int);
         a  = PopContainer<&s>();
-        printf("%d \n", a->@x); // 0 1 2 3 4 5 6 7 8 9 
+        printf("%d \n", a->@x); // 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
     }
-    printf("test");
     return 0;
 }
 ```
@@ -109,11 +110,46 @@ int main(){
         PushBackContainer<&v>(a);
     }
 
-    // Printing array
+    // Printing
     for(Value** iter = BeginContainer<&v>(); iter != EndContainer<&v>(); NextIteratorContainer<&v>(&iter)) {
         struct Value.Int* a = create_spec(Value.Int);
         a = *iter;
-        printf("%d ", a->@x); 
+        printf("%d ", a->@x); // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 
+    }
+    return 0;
+}
+```
+
+### List 
+
+```c
+#include <stdio.h>
+#include "list/list.h"
+#include "container/container.h"
+
+Container + <List;>;
+
+// Create specialisation for Value
+typedef struct Int {int x;} Int;
+Value + <Int;>;
+
+int main(){
+
+    struct Container.List l;
+    InitContainer<&l>();
+
+    // Setting numbers
+    for(uint i = 0; i < 15; ++i){
+        struct Value.Int* a = create_spec(Value.Int);
+        a->@x = i;
+        PushBackContainer<&l>(a);
+    }
+
+    // Printing 
+    while(l@size){
+        struct Value.Int* a = FrontContainer<&l>();
+        printf("%d ", a->@x); // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 
+        PopFrontContainer<&l>();
     }
     return 0;
 }
