@@ -31,6 +31,7 @@ set(SOURCE_FILES
     stack/stack-container.c
     vector/vector-container.c
     list/list-container.c
+    hashset/hashset-container.c
 )
 
 add_executable(test_program test.c ${SOURCE_FILES})
