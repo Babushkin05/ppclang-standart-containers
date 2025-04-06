@@ -5,18 +5,18 @@
 #include "../container/container.h"
 #include "../value/value.h"
 
-typedef struct Node {
+typedef struct HashSetNode {
   Value *key;
-  struct Node *next;
-} Node;
+  struct HashSetNode *next;
+} HashSetNode;
 
 typedef struct HashSet {
-  Node **buckets;
+  HashSetNode **buckets;
   unsigned int size;
   unsigned int cap;
 } HashSet;
 
-void InitHashSet(Hashset *set);
+void InitHashSet(HashSet *set);
 
 _Bool HashSetEmpty(HashSet *set);
 
