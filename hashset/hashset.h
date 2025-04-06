@@ -12,8 +12,8 @@ typedef struct Node {
 
 typedef struct HashSet {
   Node **buckets;
-  int size;
-  int cap;
+  unsigned int size;
+  unsigned int cap;
 } HashSet;
 
 void InitHashSet(Hashset *set);
@@ -24,7 +24,7 @@ void HashSetClear(HashSet *set);
 
 void HashSetInsert(HashSet *set, Value *val);
 
-void HashSetContains(HashSet *set, Value *val);
+_Bool HashSetContains(HashSet *set, Value *val);
 
 void HashSetErase(HashSet *set, Value *val);
 
