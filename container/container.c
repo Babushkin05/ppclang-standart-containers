@@ -26,9 +26,15 @@ void PopFrontContainer<Container * container>() {}
 
 Value *TopContainer<Container * container>() {}
 
-Value *FrontContainer<Container *container>() {}
+Value *FrontContainer<Container * container>() {}
 
-Value *BackContainer<Container *container>() {}
+Value *BackContainer<Container * container>() {}
+
+void InsertContainer<Container * container>(Value *val) {}
+
+_Bool ContainsContainer<Container * container>(Value *val) {}
+
+void EraseContainer<Container * container>(Value *val) {}
 
 // --------------------------------------------
 // Iterators
