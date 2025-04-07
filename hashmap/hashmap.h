@@ -20,6 +20,8 @@ _Bool HashMapEmpty(HashMap *map);
 
 void HashMapClear(HashMap *map);
 
+_Bool HashMapContains(HashMap *map, Value *key);
+
 void HashMapInsert(HashMap *map, Value* key, Value *val);
 
 Value *HashMapAt(HashMap *map, Value *key);
