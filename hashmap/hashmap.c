@@ -42,7 +42,7 @@ void InitHashMap(HashMap *map) {
   map->buckets =
       (HashMapNode **)calloc(HASHMAP_INITIAL_CAP, sizeof(HashMapNode *));
   map->size = 0;
-  set->cap = HASHMAP_INITIAL_CAP;
+  map->cap = HASHMAP_INITIAL_CAP;
 }
 
 _Bool HashMapEmpty(HashMap *map) { return map->size == 0; }
@@ -66,7 +66,7 @@ void HashMapInsert(HashMap *map, Value *key, Value *val) {
     rehash_map(map);
   }
 
-  if (HashMapContains(set, key)) {
+  if (HashMapContains(map, key)) {
     return;
   }
 
