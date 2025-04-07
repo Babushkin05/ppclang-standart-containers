@@ -16,6 +16,7 @@ set(SOURCE_FILES
     vector/vector.h
     list/list.h
     hashset/hashset.h
+    hashmap/hashmap.h
     container/container.h
 
     #sources
@@ -26,6 +27,7 @@ set(SOURCE_FILES
     vector/vector.c
     list/list.c
     hashset/hashset.c
+    hashmap/hashmap.c
     container/container.c
     array/array-container.c
     stack/stack-container.c
