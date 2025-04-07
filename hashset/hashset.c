@@ -13,7 +13,7 @@ unsigned int set_hasher(const void *ptr, unsigned int N) {
   return (unsigned int)(hash % N);
 }
 
-void rehash(HashSet *set) {
+void rehash_set(HashSet *set) {
   int old_cap = set->cap;
   HashSetNode **old_buckets = set->buckets;
 
@@ -61,7 +61,7 @@ void HashSetClear(HashSet *set) {
 
 void HashSetInsert(HashSet *set, Value *val) {
   if ((double)set->size / set->cap >= HASHSET_LOAD_FACTOR) {
-    rehash(set);
+    rehash_set(set);
   }
 
   if (HashSetContains(set, val)) {
