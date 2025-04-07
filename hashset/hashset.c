@@ -2,10 +2,10 @@
 #include <inttypes.h>
 #include <stdint.h>
 
-#define INITIAL_CAP 16
-#define LOAD_FACTOR 0.75
+#define HASHSET_INITIAL_CAP 16
+#define HASHSET_LOAD_FACTOR 0.75
 
-unsigned int hash_pointer(const void *ptr, unsigned int N) {
+unsigned int set_hasher(const void *ptr, unsigned int N) {
   uintptr_t ptr_value = (uintptr_t)ptr;
 
   // xor of left and right part of pointer
@@ -25,7 +25,7 @@ void rehash(HashSet *set) {
     HashSetNode *current = old_buckets[i];
     while (current != NULL) {
       HashSetNode *next = current->next;
-      unsigned int new_index = hash_pointer(current->key, set->cap);
+      unsigned int new_index = set_hasher(current->key, set->cap);
 
       current->next = set->buckets[new_index];
       set->buckets[new_index] = current;
@@ -39,9 +39,9 @@ void rehash(HashSet *set) {
 }
 
 void InitHashSet(HashSet *set) {
-  set->buckets = (HashSetNode **)calloc(INITIAL_CAP, sizeof(HashSetNode *));
+  set->buckets = (HashSetNode **)calloc(HASHSET_INITIAL_CAP, sizeof(HashSetNode *));
   set->size = 0;
-  set->cap = INITIAL_CAP;
+  set->cap = HASHSET_INITIAL_CAP;
 }
 
 _Bool HashSetEmpty(HashSet *set) { return set->size == 0; }
@@ -60,7 +60,7 @@ void HashSetClear(HashSet *set) {
 }
 
 void HashSetInsert(HashSet *set, Value *val) {
-  if ((double)set->size / set->cap >= LOAD_FACTOR) {
+  if ((double)set->size / set->cap >= HASHSET_LOAD_FACTOR) {
     rehash(set);
   }
 
@@ -68,7 +68,7 @@ void HashSetInsert(HashSet *set, Value *val) {
     return;
   }
 
-  unsigned int index = hash_pointer(val, set->cap);
+  unsigned int index = set_hasher(val, set->cap);
   HashSetNode *new_HashSetNode = (HashSetNode *)malloc(sizeof(HashSetNode));
   new_HashSetNode->key = val;
   new_HashSetNode->next = set->buckets[index];
@@ -77,7 +77,7 @@ void HashSetInsert(HashSet *set, Value *val) {
 }
 
 _Bool HashSetContains(HashSet *set, Value *val) {
-  unsigned int index = hash_pointer(val, set->cap);
+  unsigned int index = set_hasher(val, set->cap);
   HashSetNode *current = set->buckets[index];
 
   while (current != NULL) {
@@ -91,7 +91,7 @@ _Bool HashSetContains(HashSet *set, Value *val) {
 }
 
 void HashSetErase(HashSet *set, Value *val) {
-  unsigned int index = hash_pointer(val, set->cap);
+  unsigned int index = set_hasher(val, set->cap);
   HashSetNode *current = set->buckets[index];
   HashSetNode *prev = NULL;
 
