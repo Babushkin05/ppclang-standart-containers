@@ -6,7 +6,7 @@
  * @brief Generic container interface for storing Value objects
  * 
  * This header defines an abstract interface for various container types
- * (stacks, queues, lists, etc.) that can store Value objects.
+ * (stacks, vectors, lists, etc.) that can store Value objects.
  * Implementations should provide concrete versions of these operations.
  */
 
