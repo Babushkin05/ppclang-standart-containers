@@ -149,10 +149,10 @@ _Bool ContainsContainer(Container *container, Value *val);
 /**
  * @brief Get element by index (for indexable containers)
  * @param container Pointer to the container
- * @param index Position to access
+ * @param key Pointer to key
  * @return Value at index, or NULL if out of bounds
  */
-Value *ContainerValueByKey(Container *container, int index);
+Value *ContainerValueByKey(Container *container, Value *key);
 
 /**
  * @brief Remove specific value from container

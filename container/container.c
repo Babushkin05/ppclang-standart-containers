@@ -96,9 +96,9 @@ _Bool ContainsContainer(Container *container, Value *val) {
     return false;
 }
 
-// Get value by key/index
+// Get value by key
 // Returns element at specified position (index-based access)
-Value *ContainerValueByKey(Container *container, int index) {
+Value *ContainerValueByKey(Container *container, Value *key) {
     perror("ContainerValueByKey not supported for this container");
     return NULL;
 }
