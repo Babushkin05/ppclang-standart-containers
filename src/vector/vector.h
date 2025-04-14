@@ -2,7 +2,7 @@
 #define __vector__
 // vector.h
 
-#include "../value/value.h"
+#include "value.h"
 
 typedef struct Vector {
   size_t len;

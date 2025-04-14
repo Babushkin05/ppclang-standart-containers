@@ -1,11 +1,11 @@
 #ifndef __stack__
 #define __stack__
 
-#include "../value/value.c"
+#include "value.h"
 
 typedef struct Stack {
   int capasity;
-  uint topInd;
+  size_t topInd;
   Value **data;
 } Stack;
 

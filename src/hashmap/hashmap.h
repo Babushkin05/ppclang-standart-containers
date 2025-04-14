@@ -2,7 +2,7 @@
 #define __hashmap__
 // hashmap.h
 
-#include "../value/value.h"
+#include "value.h"
 
 typedef struct HashMapNode {
     Value *key;

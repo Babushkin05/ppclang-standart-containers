@@ -2,7 +2,7 @@
 #define __container__
 
 
-#include "../value/value.c"
+#include "value.h"
 
 // Generalised container structure
 typedef struct Container {

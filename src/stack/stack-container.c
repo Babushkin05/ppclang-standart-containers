@@ -1,4 +1,4 @@
-#include "../container/container.h"
+#include "container.h"
 #include "stack.h"
 
 Container + < Stack;>;

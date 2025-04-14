@@ -2,8 +2,8 @@
 #define __list__
 // list.h
 
-#include "../container/container.h"
-#include "../value/value.h"
+#include "container.h"
+#include "value.h"
 
 typedef struct Node {
   Value *val;

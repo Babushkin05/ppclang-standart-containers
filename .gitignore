@@ -2,5 +2,5 @@ test.c
 *out*
 build
 bin
-test*
 run-testfile
+lib

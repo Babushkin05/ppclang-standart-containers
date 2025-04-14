@@ -2,8 +2,8 @@
 #define __array__
 // array.h
 
-#include "../container/container.h"
-#include "../value/value.h"
+#include "container.h"
+#include "value.h"
 #include <stdio.h>
 
 // Structure of Array.
