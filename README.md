@@ -12,6 +12,8 @@
 
 - HashSet
 
+- HashMap
+
 ## Usage
 
 ### Array
@@ -180,6 +182,46 @@ int main(){
     struct Value.String *b = create_spec(Value.String);
     b->@str = "world";
     printf("is 'hello' inside: %d\n is 'world' inside: %d", ContainsContainer<&set>(a), ContainsContainer<&set>(b));
+    
+    return 0;
+}
+```
+
+### HashMap
+
+```c
+#include <stdio.h>
+#include "hashmap/hashmap.h"
+#include "container/container.h"
+Container + <HashMap;>;
+
+// Create specialisation for Value
+typedef struct String {char* str;} String;
+typedef struct Int {int x;} Int;
+Value + <String;>;
+Value + <Int;>;
+
+int main(){
+    struct Container.HashMap map;
+    InitContainer<&map>();
+
+    struct Value.String k1;
+    k1@str = "hello";
+    struct Value.Int v1;
+    v1@x = 42;
+
+    struct Value.String k2;
+    k2@str = "world";
+    struct Value.Int v2;
+    v2@x = 52;
+    
+    InsertKeyValueContainer<&map>(&k1, &v1);
+    InsertKeyValueContainer<&map>(&k2, &v2);
+
+    struct Value.Int* h = ContainerValueByKey<&map>(&k1);
+    struct Value.Int* w = ContainerValueByKey<&map>(&k2);
+
+    printf("'hello' : %d\n'world' : %d", h->@x, w->@x);
     
     return 0;
 }
