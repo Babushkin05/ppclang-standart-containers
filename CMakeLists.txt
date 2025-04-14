@@ -6,6 +6,7 @@ set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type is Debug" FORCE)
 
 set(BUILD_DIR "${CMAKE_BINARY_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${BUILD_DIR}/../bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${BUILD_DIR}/../lib")
 
 # Установка переменной со списком исходников
 set(SOURCE_FILES
@@ -37,3 +38,4 @@ set(SOURCE_FILES
 )
 
 add_executable(test_program test.c ${SOURCE_FILES})
+add_library(containers STATIC ${SOURCE_LIB})   # Создание статической библиотеки
