@@ -16,7 +16,6 @@ set(SOURCE_FILES
     vector/vector.h
     list/list.h
     hashset/hashset.h
-    hashmap/hashmap.h
     container/container.h
 
     #sources
@@ -34,6 +33,7 @@ set(SOURCE_FILES
     vector/vector-container.c
     list/list-container.c
     hashset/hashset-container.c
+    hashmap/hashmap-container.c
 )
 
 add_executable(test_program test.c ${SOURCE_FILES})
