@@ -1,197 +1,95 @@
 #ifndef __container__
 #define __container__
 
-/**
- * @file container.h
- * @brief Generic container interface for storing Value objects
- * 
- * This header defines an abstract interface for various container types
- * (stacks, vectors, lists, etc.) that can store Value objects.
- * Implementations should provide concrete versions of these operations.
- */
 
 #include "../value/value.c"
 
-/**
- * @struct Container
- * @brief Base structure for all container implementations
- * 
- * This serves as a generic container type that can be implemented
- * as various concrete data structures (array, list, tree, etc.).
- * The actual implementation details should be defined in derived types.
- */
+// Generalised container structure
 typedef struct Container {
-    // Implementation-specific fields should be added in concrete containers
-} Container;
+} < > Container;
 
-// -------------------------------
-// Basic Container Operations
-// -------------------------------
+// --------------------------------------------
+// Basic container operations
 
-/**
- * @brief Initialize a container with default settings
- * @param container Pointer to the container to initialize
- */
-void InitContainer(Container *container);
+// Container Initialisation
+void InitContainer<Container * container>();
 
-/**
- * @brief Initialize a container with specified initial capacity
- * @param container Pointer to the container to initialize
- * @param size Initial capacity of the container
- */
-void InitContainerWithSize(Container *container, size_t size);
+// Container Initialisation with size parameter
+void InitContainerWithSize<Container * container>(size_t size);
 
-/**
- * @brief Remove all elements from the container
- * @param container Pointer to the container to clear
- */
-void ClearContainer(Container *container);
+// Deleting all elements of container
+void ClearContainer<Container * container>();
 
-/**
- * @brief Check if container contains no elements
- * @param container Pointer to the container to check
- * @return 1 if container is empty, 0 otherwise
- */
-_Bool EmptyContainer(Container *container);
+// Checking is container empty
+_Bool EmptyContainer<Container * container>();
 
-// -------------------------------
-// Element Addition Operations
-// -------------------------------
+// --------------------------------------------
+// Element insertion operations
 
-/**
- * @brief Add element to container (implementation-specific)
- * @param container Pointer to the container
- * @param val Value to add (container decides where to place it)
- */
-void PushContainer(Container *container, Value *val);
+// Push element to container (general)
+void PushContainer<Container * container>(Value *val);
 
-/**
- * @brief Add element to the end of container
- * @param container Pointer to the container
- * @param val Value to add at the back
- */
-void PushBackContainer(Container *container, Value *val);
+// Push element to back of container
+void PushBackContainer<Container * container>(Value *val);
 
-/**
- * @brief Add element to the beginning of container
- * @param container Pointer to the container
- * @param val Value to add at the front
- */
-void PushFrontContainer(Container *container, Value *val);
+// Push element to front of container
+void PushFrontContainer<Container * container>(Value *val);
 
-// -------------------------------
-// Element Removal Operations
-// -------------------------------
+// --------------------------------------------
+// Element removal operations
 
-/**
- * @brief Remove and return element (implementation-specific)
- * @param container Pointer to the container
- * @return Removed value, or NULL if container is empty
- */
-Value *PopContainer(Container *container);
+// Pop element from container (general)
+Value *PopContainer<Container * container>();
 
-/**
- * @brief Remove element from the end of container
- * @param container Pointer to the container
- */
-void PopBackContainer(Container *container);
+// Remove element from back of container
+void PopBackContainer<Container * container>();
 
-/**
- * @brief Remove element from the beginning of container
- * @param container Pointer to the container
- */
-void PopFrontContainer(Container *container);
+// Remove element from front of container
+void PopFrontContainer<Container * container>();
 
-// -------------------------------
-// Element Access Operations
-// -------------------------------
+// --------------------------------------------
+// Element access operations
 
-/**
- * @brief Get top element without removal (for stack-like containers)
- * @param container Pointer to the container
- * @return Top value, or NULL if container is empty
- */
-Value *TopContainer(Container *container);
+// Get top element of container
+Value *TopContainer<Container * container>();
 
-/**
- * @brief Get first element in container
- * @param container Pointer to the container
- * @return Front value, or NULL if container is empty
- */
-Value *FrontContainer(Container *container);
+// Get front element of container
+Value *FrontContainer<Container * container>();
 
-/**
- * @brief Get last element in container
- * @param container Pointer to the container
- * @return Back value, or NULL if container is empty
- */
-Value *BackContainer(Container *container);
+// Get back element of container
+Value *BackContainer<Container * container>();
 
-// -------------------------------
-// Special Container Operations
-// -------------------------------
+// --------------------------------------------
+// Special container operations
 
-/**
- * @brief Insert element at appropriate position (for ordered containers)
- * @param container Pointer to the container
- * @param val Value to insert
- */
-void InsertContainer(Container *container, Value *val);
+// Insert element into container (general)
+void InsertContainer<Container * container>(Value *val);
 
-/**
- * @brief Check if container contains specific value
- * @param container Pointer to the container
- * @param val Value to search for
- * @return 1 if value found, 0 otherwise
- */
-_Bool ContainsContainer(Container *container, Value *val);
+// Insert element into container (general)
+void InsertKeyValueContainer<Container * container>(Value *key, Value *val);
 
-/**
- * @brief Get element by index (for indexable containers)
- * @param container Pointer to the container
- * @param key Pointer to key
- * @return Value at index, or NULL if out of bounds
- */
-Value *ContainerValueByKey(Container *container, Value *key);
+// Check if container contains specific value
+_Bool ContainsContainer<Container * container>(Value *val);
 
-/**
- * @brief Remove specific value from container
- * @param container Pointer to the container
- * @param val Value to remove
- */
-void EraseContainer(Container *container, Value *val);
+// Get container value by key (for associative containers)
+Value *ContainerValueByKey<Container * container>(Value *key);
 
-// -------------------------------
-// Iterator Operations
-// -------------------------------
+// Erase specific value from container
+void EraseContainer<Container * container>(Value *val);
 
-/**
- * @brief Get iterator to element at specific index
- * @param container Pointer to the container
- * @param index Position to access
- * @return Iterator to element at index, or NULL if invalid
- */
-Value **ContainerAt(Container *container, int index);
+// --------------------------------------------
+// Iterators operations
 
-/**
- * @brief Get iterator to first element
- * @param container Pointer to the container
- * @return Iterator to beginning, or NULL if empty
- */
-Value **BeginContainer(Container *container);
+// Iterator for index (only for RandomAccesContainers)
+Value **ContainerAt<Container * container>(int index);
 
-/**
- * @brief Get iterator to position after last element
- * @param container Pointer to the container
- * @return End iterator
- */
-Value **EndContainer(Container *container);
+// Iterator to first element
+Value **BeginContainer<Container * container>();
 
-/**
- * @brief Advance iterator to next element
- * @param container Pointer to the container
- * @param iter Pointer to iterator to advance (will be modified)
- */
-void NextIteratorContainer(Container *container, Value ***iter);
+// Iterator to last element
+Value **EndContainer<Container * container>();
+
+// Move iterator to next element in container
+void NextIteratorContainer<Container * container>(Value ***iter);
 
 #endif // __container__

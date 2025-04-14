@@ -21,7 +21,7 @@ void ClearContainer<Container * container>() {
 // Checking is container empty
 _Bool EmptyContainer<Container * container>() {
     perror("EmptyContainer not supported for this container");
-    return false;
+    return 0;
 }
 
 // --------------------------------------------
@@ -90,10 +90,15 @@ void InsertContainer<Container * container>(Value *val) {
     perror("InsertContainer not supported for this container");
 }
 
+// Insert element into container (general)
+void InsertKeyValueContainer<Container * container>(Value *key, Value *val) {
+    perror("InsertKeyValueContainer not supported for this container");
+}
+
 // Check if container contains specific value
 _Bool ContainsContainer<Container * container>(Value *val) {
     perror("ContainsContainer not supported for this container");
-    return false;
+    return 0;
 }
 
 // Get container value by key (for associative containers)
