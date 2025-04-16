@@ -38,7 +38,9 @@ add_library(containers STATIC
     src/hashset/hashset.c
     src/hashmap/hashmap.c
     src/container/container.c
+    
     src/array/array-container.c
+    
     src/stack/stack-container.c
     src/vector/vector-container.c
     src/list/list-container.c
@@ -46,7 +48,7 @@ add_library(containers STATIC
     src/hashmap/hashmap-container.c
 )
 
-option(TESTING "Build tests" ON)
+option( "Build tests" ON)
 if(TESTING)
     enable_testing()
     add_subdirectory(tests)
