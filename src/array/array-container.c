@@ -21,10 +21,9 @@ _Bool EmptyContainer<Container.Array * container>() {
 // --------------------------------------------
 // Iterators
 
-Value **ContainerAt<Container.Array * array>(int index) {
-  if (index >= array->@len)
-    return NULL;
-  return &array->@data[index];
+Value **ContainerAt<Container.Array * container>(int index) {
+  Array *array = &(container->@);
+  return ArrayAt(array, index);
 }
 
 Value **BeginContainer<Container.Array * container>() {

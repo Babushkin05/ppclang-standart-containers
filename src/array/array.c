@@ -19,7 +19,7 @@ _Bool ArrayEmpty(Array *array) { return array->len == 0; }
 
 // Analog of array[index]
 Value **ArrayAt(Array *array, int index) {
-  if (index >= array->len)
+  if (index >= array->len || index < 0)
     return NULL;
   return &array->data[index];
 }
