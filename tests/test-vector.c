@@ -43,7 +43,7 @@ void Test_Vector_Push_Pop() {
     for (int i = 0; i < 5; i++) {
         struct Value.Int *a = create_spec(Value.Int);
         a->@x = i;
-        PushBackContainer<&vec>((Value*)a);
+        PushBackContainer<&vec>(a);
     }
     
     assert(vec.@len == 5);
@@ -51,13 +51,13 @@ void Test_Vector_Push_Pop() {
     
     // Verify pushed elements
     for (int i = 0; i < 5; i++) {
-        struct Value.Int *elem = (struct Value.Int*)*ContainerAt<&vec>(i);
+        struct Value.Int *elem = *ContainerAt<&vec>(i);
         assert(elem->@x == i);
     }
     
     // Pop elements
     for (int i = 4; i >= 0; i--) {
-        struct Value.Int *elem = (struct Value.Int*)*ContainerAt<&vec>(vec.@len-1);
+        struct Value.Int *elem = *ContainerAt<&vec>(vec.@len-1);
         assert(elem->@x == i);
         PopBackContainer<&vec>();
     }
@@ -77,7 +77,7 @@ void Test_Vector_Clear() {
     for (int i = 0; i < 3; i++) {
         struct Value.Int *a = create_spec(Value.Int);
         a->@x = i;
-        *ContainerAt<&vec>(i) = (Value*)a;
+        *ContainerAt<&vec>(i) = a;
     }
     
     assert(EmptyContainer<&vec>() == 0);
@@ -97,7 +97,7 @@ void Test_Vector_Iterators() {
     for (int i = 0; i < 4; i++) {
         struct Value.Int *a = create_spec(Value.Int);
         a->@x = i * 2;
-        *ContainerAt<&vec>(i) = (Value*)a;
+        *ContainerAt<&vec>(i) = a;
     }
     
     // Test iteration
@@ -123,11 +123,11 @@ void Test_Vector_At_Boundaries() {
     // Valid access
     struct Value.Int *a = create_spec(Value.Int);
     a->@x = 10;
-    *ContainerAt<&vec>(0) = (Value*)a;
+    *ContainerAt<&vec>(0) = a;
     
     struct Value.Int *b = create_spec(Value.Int);
     b->@x = 20;
-    *ContainerAt<&vec>(1) = (Value*)b;
+    *ContainerAt<&vec>(1) = b;
     
     // Invalid access
     assert(ContainerAt<&vec>(2) == NULL);
@@ -147,7 +147,7 @@ void Test_Vector_Growth() {
     for (int i = 0; i < 20; i++) {
         struct Value.Int *a = create_spec(Value.Int);
         a->@x = i;
-        PushBackContainer<&vec>((Value*)a);
+        PushBackContainer<&vec>(a);
     }
     
     assert(vec.@len == 20);
