@@ -7,6 +7,7 @@ set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type is Debug" FORCE)
 # directory with symlinks
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include)
 foreach(header_path 
+    src/int/int.h
     src/value/value.h
     src/array/array.h
     src/stack/stack.h
@@ -30,6 +31,7 @@ include_directories(
 )
 
 add_library(containers STATIC
+    src/int/int.c
     src/value/value.c
     src/array/array.c
     src/stack/stack.c
@@ -39,8 +41,8 @@ add_library(containers STATIC
     src/hashmap/hashmap.c
     src/container/container.c
     
+    src/int/int-value.c
     src/array/array-container.c
-    
     src/stack/stack-container.c
     src/vector/vector-container.c
     src/list/list-container.c
