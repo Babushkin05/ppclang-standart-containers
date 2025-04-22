@@ -4,26 +4,18 @@
 
 ### Values
 
-* Value
+* [Value](./values/value.md)
+* [Int](./values/int.md)
+* [String](./values/string.md)
 
-* Int
+### Containers
 
-* String
-
-## Containers
-
-* Container
-
-* Array
-
-* Vector
-
-* Stack
-
-* List
-
-* HashMap
-
-* HashSet
+* [Container](./containers/container.md)
+* [Array](./containers/array.md)
+* [Vector](./containers/vector.md)
+* [Stack](./containers/stack.md)
+* [List](./containers/list.md)
+* [HashMap](./containers/hashmap.md)
+* [HashSet](./containers/hashset.md)
 
 // пока пустые
