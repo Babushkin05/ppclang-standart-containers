@@ -44,7 +44,6 @@ void HashSetClear(HashSet *set) {
     while (current != NULL) {
       HashSetNode *temp = current;
       current = current->next;
-      free(temp->key);
       free(temp);
     }
   }

@@ -119,7 +119,6 @@ void Test_HashSet_Duplicates() {
     // Erase once should remove it completely
     EraseContainer<&set>(a);
     assert(ContainsContainer<&set>(a) == 0);
-    printf("test\n");
     printf("Test_HashSet_Duplicates passed!\n\n");
 }
 
