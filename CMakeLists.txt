@@ -14,7 +14,7 @@ foreach(header_path
     src/vector/vector.h
     src/list/list.h
     src/hashset/hashset.h
-    src/hashmap.h
+    src/hashmap/hashmap.h
     src/container/container.h
 )
     get_filename_component(header_name ${header_path} NAME)

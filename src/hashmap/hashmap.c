@@ -5,13 +5,6 @@
 #define HASHMAP_INITIAL_CAP 16
 #define HASHMAP_LOAD_FACTOR 0.75
 
-unsigned int map_hasher(const void *ptr, unsigned int N) {
-  uintptr_t ptr_value = (uintptr_t)ptr;
-
-  // xor of left and right part of pointer
-  uintptr_t hash = ptr_value ^ (ptr_value >> sizeof(void *) / 2);
-  return (unsigned int)(hash % N);
-}
 
 void rehash_map(HashMap *map) {
   int old_cap = map->cap;
@@ -25,7 +18,7 @@ void rehash_map(HashMap *map) {
     HashMapNode *current = old_buckets[i];
     while (current != NULL) {
       HashMapNode *next = current->next;
-      unsigned int new_index = map_hasher(current->key, map->cap);
+      unsigned int new_index = HashValue<current->key>() % map->cap;
 
       current->next = map->buckets[new_index];
       map->buckets[new_index] = current;
@@ -53,12 +46,11 @@ void HashMapClear(HashMap *map) {
     while (current != NULL) {
       HashMapNode *temp = current;
       current = current->next;
-      free(temp->key);
-      free(temp->val);
       free(temp);
     }
   }
   free(map->buckets);
+  InitHashMap(map);
 }
 
 void HashMapInsert(HashMap *map, Value *key, Value *val) {
@@ -66,11 +58,9 @@ void HashMapInsert(HashMap *map, Value *key, Value *val) {
     rehash_map(map);
   }
 
-  if (HashMapContains(map, key)) {
-    return;
-  }
+  HashMapErase(map, key);
 
-  unsigned int index = map_hasher(key, map->cap);
+  unsigned int index = HashValue<key>() % map->cap;
   HashMapNode *new_HashMapNode = (HashMapNode *)malloc(sizeof(HashMapNode));
   new_HashMapNode->key = key;
   new_HashMapNode->val = val;
@@ -80,11 +70,11 @@ void HashMapInsert(HashMap *map, Value *key, Value *val) {
 }
 
 _Bool HashMapContains(HashMap *map, Value *key) {
-  unsigned int index = map_hasher(key, map->cap);
+  unsigned int index = HashValue<key>() % map->cap;
   HashMapNode *current = map->buckets[index];
 
   while (current != NULL) {
-    if (current->key == key) {
+    if (ValueEqual<current->key, key>()) {
       return 1;
     }
     current = current->next;
@@ -94,11 +84,11 @@ _Bool HashMapContains(HashMap *map, Value *key) {
 }
 
 Value *HashMapAt(HashMap *map, Value *key) {
-  unsigned int index = map_hasher(key, map->cap);
+  unsigned int index = HashValue<key>() % map->cap;
   HashMapNode *current = map->buckets[index];
 
   while (current != NULL) {
-    if (current->key == key) {
+    if (ValueEqual<current->key, key>()) {
       return current->val;
     }
     current = current->next;
@@ -108,19 +98,17 @@ Value *HashMapAt(HashMap *map, Value *key) {
 }
 
 void HashMapErase(HashMap *map, Value *key) {
-  unsigned int index = map_hasher(key, map->cap);
+  unsigned int index = HashValue<key>() % map->cap;
   HashMapNode *current = map->buckets[index];
   HashMapNode *prev = NULL;
 
   while (current != NULL) {
-    if (current->key == key) {
+    if (ValueEqual<current->key, key>()) {
       if (prev == NULL) {
         map->buckets[index] = current->next;
       } else {
         prev->next = current->next;
       }
-      free(current->key);
-      free(current->val);
       free(current);
       map->size--;
       return;
