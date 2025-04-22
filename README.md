@@ -11,6 +11,19 @@ chmod +x ppscl_installer.run
 sudo ./ppscl_installer.run
 ```
 
-### documentation in [/doc](/doc/)
+## usage
 
-### [more about the procedural-parametric paradigm in general](http://www.softcraft.ru/ppp/)
+add this to ```CMakeLists.txt``` to link library to your project:
+
+```cmake
+target_link_libraries(my_program PRIVATE
+    -Wl,--whole-archive
+    containers
+    -Wl,--no-whole-archive
+)
+```
+
+
+## documentation in [/doc](/doc/)
+
+## [more about the procedural-parametric paradigm in general](http://www.softcraft.ru/ppp/)
