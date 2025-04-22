@@ -1,14 +1,12 @@
 #include "array.h"
 #include "container.h"
+#include "int.h"
 #include <assert.h>
 #include <stdio.h>
 
 Container + < Array;> ;
 
 // Create specialisation for Value
-typedef struct Int {
-  int x;
-} Int;
 Value + < Int;> ;
 
 void Test_At_And_Iterators() {
