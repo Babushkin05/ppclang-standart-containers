@@ -1,6 +1,7 @@
 #include "hashmap.h"
 #include "container.h"
 #include "int.h"
+#include "string.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -8,10 +9,7 @@ Container + <HashMap;>;
 
 Value + <Int;>;
 
-typedef struct StringValue {
-    char value[20];
-} StringValue;
-Value + <StringValue;>;
+Value + <String;>;
 
 void Test_HashMap_Init_Empty() {
     printf("Running Test_HashMap_Init_Empty...\n");
@@ -32,7 +30,7 @@ void Test_HashMap_Insert_Lookup() {
         struct Value.Int* key = create_spec(Value.Int);
         key->@x = i;
         
-        struct Value.StringValue* val = create_spec(Value.StringValue);
+        struct Value.String* val = create_spec(Value.String);
         sprintf(val->@value, "Value%d", i);
         
         InsertKeyValueContainer<&map>((Value*)key, (Value*)val);
@@ -43,7 +41,7 @@ void Test_HashMap_Insert_Lookup() {
         struct Value.Int* key = create_spec(Value.Int);
         key->@x = i;
         
-        struct Value.StringValue* val = (struct Value.StringValue*)ContainerValueByKey<&map>((Value*)key);
+        struct Value.String* val = (struct Value.String*)ContainerValueByKey<&map>((Value*)key);
         assert(val != NULL);
         
         char expected[20];
@@ -64,7 +62,7 @@ void Test_HashMap_Contains_Erase() {
         struct Value.Int* key = create_spec(Value.Int);
         key->@x = i;
         
-        struct Value.StringValue* val = create_spec(Value.StringValue);
+        struct Value.String* val = create_spec(Value.String);
         sprintf(val->@value, "Item%d", i);
         
         InsertKeyValueContainer<&map>(key, val);
@@ -87,7 +85,7 @@ void Test_HashMap_Contains_Erase() {
         
         if (i % 2 == 0) {
             assert(ContainsContainer<&map>((Value*)key) == 1);
-            struct Value.StringValue* val = (struct Value.StringValue*)ContainerValueByKey<&map>((Value*)key);
+            struct Value.String* val = (struct Value.String*)ContainerValueByKey<&map>((Value*)key);
             assert(val != NULL);
         } else {
             assert(ContainsContainer<&map>((Value*)key) == 0);
@@ -108,7 +106,7 @@ void Test_HashMap_Clear() {
         struct Value.Int* key = create_spec(Value.Int);
         key->@x = i;
         
-        struct Value.StringValue* val = create_spec(Value.StringValue);
+        struct Value.String* val = create_spec(Value.String);
         sprintf(val->@value, "Test%d", i);
         
         InsertKeyValueContainer<&map>((Value*)key, (Value*)val);
@@ -137,15 +135,15 @@ void Test_HashMap_Update_Values() {
     struct Value.Int* key = create_spec(Value.Int);
     key->@x = 42;
     
-    struct Value.StringValue* val1 = create_spec(Value.StringValue);
+    struct Value.String* val1 = create_spec(Value.String);
     strcpy(val1->@value, "First");
     InsertKeyValueContainer<&map>((Value*)key, (Value*)val1);
     // Update value
-    struct Value.StringValue* val2 = create_spec(Value.StringValue);
+    struct Value.String* val2 = create_spec(Value.String);
     strcpy(val2->@value, "Second");
     InsertKeyValueContainer<&map>((Value*)key, (Value*)val2);
     // Verify update
-    struct Value.StringValue* result = ContainerValueByKey<&map>((Value*)key);
+    struct Value.String* result = ContainerValueByKey<&map>((Value*)key);
         printf("%s\n", result->@value);
     assert(strcmp(result->@value, "Second") == 0);
     
@@ -164,7 +162,7 @@ void Test_HashMap_Collisions() {
         struct Value.Int* key = create_spec(Value.Int);
         key->@x = keys[i];
         
-        struct Value.StringValue* val = create_spec(Value.StringValue);
+        struct Value.String* val = create_spec(Value.String);
         sprintf(val->@value, "Collision%d", (int)i);
         
         InsertKeyValueContainer<&map>((Value*)key, (Value*)val);
@@ -176,7 +174,7 @@ void Test_HashMap_Collisions() {
         key->@x = keys[i];
         
         assert(ContainsContainer<&map>((Value*)key) == 1);
-        struct Value.StringValue* val = (struct Value.StringValue*)ContainerValueByKey<&map>((Value*)key);
+        struct Value.String* val = (struct Value.String*)ContainerValueByKey<&map>((Value*)key);
         assert(val != NULL);
     }
     
