@@ -5,14 +5,6 @@
 #define HASHSET_INITIAL_CAP 16
 #define HASHSET_LOAD_FACTOR 0.75
 
-unsigned int set_hasher(const void *ptr, unsigned int N) {
-  uintptr_t ptr_value = (uintptr_t)ptr;
-
-  // xor of left and right part of pointer
-  uintptr_t hash = ptr_value ^ (ptr_value >> sizeof(void *) / 2);
-  return (unsigned int)(hash % N);
-}
-
 void rehash_set(HashSet *set) {
   int old_cap = set->cap;
   HashSetNode **old_buckets = set->buckets;
@@ -25,7 +17,7 @@ void rehash_set(HashSet *set) {
     HashSetNode *current = old_buckets[i];
     while (current != NULL) {
       HashSetNode *next = current->next;
-      unsigned int new_index = set_hasher(current->key, set->cap);
+      unsigned int new_index = HashValue<current->key>() % set->cap;;
 
       current->next = set->buckets[new_index];
       set->buckets[new_index] = current;
@@ -57,6 +49,7 @@ void HashSetClear(HashSet *set) {
     }
   }
   free(set->buckets);
+  InitHashSet(set);
 }
 
 void HashSetInsert(HashSet *set, Value *val) {
@@ -68,7 +61,7 @@ void HashSetInsert(HashSet *set, Value *val) {
     return;
   }
 
-  unsigned int index = set_hasher(val, set->cap);
+  unsigned int index = HashValue<val>() % set->cap;
   HashSetNode *new_HashSetNode = (HashSetNode *)malloc(sizeof(HashSetNode));
   new_HashSetNode->key = val;
   new_HashSetNode->next = set->buckets[index];
@@ -77,11 +70,11 @@ void HashSetInsert(HashSet *set, Value *val) {
 }
 
 _Bool HashSetContains(HashSet *set, Value *val) {
-  unsigned int index = set_hasher(val, set->cap);
+  unsigned int index =  HashValue<val>() % set->cap;
   HashSetNode *current = set->buckets[index];
 
   while (current != NULL) {
-    if (current->key == val) {
+    if (ValueEqual<current->key, val>()) {
       return 1;
     }
     current = current->next;
@@ -91,18 +84,17 @@ _Bool HashSetContains(HashSet *set, Value *val) {
 }
 
 void HashSetErase(HashSet *set, Value *val) {
-  unsigned int index = set_hasher(val, set->cap);
+  unsigned int index =  HashValue<val>() % set->cap;
   HashSetNode *current = set->buckets[index];
   HashSetNode *prev = NULL;
 
   while (current != NULL) {
-    if (current->key == val) {
+    if (ValueEqual<current->key, val>()) {
       if (prev == NULL) {
         set->buckets[index] = current->next;
       } else {
         prev->next = current->next;
       }
-      free(current->key);
       free(current);
       set->size--;
       return;
