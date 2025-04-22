@@ -1,6 +1,6 @@
 // stack.c
 
-#include "stack.h"
+#include "ppstack.h"
 #include <stdlib.h>
 
 // Initialisation

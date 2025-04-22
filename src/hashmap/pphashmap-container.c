@@ -1,5 +1,5 @@
-#include "container.h"
-#include "hashmap.h"
+#include "ppcontainer.h"
+#include "pphashmap.h"
 
 Container + < HashMap;>;
 

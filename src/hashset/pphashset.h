@@ -2,8 +2,8 @@
 #define __hashset__
 // hashset.h
 
-#include "container.h"
-#include "value.h"
+#include "ppcontainer.h"
+#include "ppvalue.h"
 
 typedef struct HashSetNode {
   Value *key;

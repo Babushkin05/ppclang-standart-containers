@@ -1,5 +1,5 @@
 // array.c
-#include "array.h"
+#include "pparray.h"
 #include <stdlib.h>
 
 // Array initialisation

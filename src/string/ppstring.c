@@ -1,4 +1,4 @@
-#include "string.h"
+#include "ppstring.h"
 
 unsigned int HashString(String *str) {
     unsigned int hash = 5381;

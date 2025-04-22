@@ -1,5 +1,5 @@
-#include "int.h"
-#include "value.h"
+#include "ppint.h"
+#include "ppvalue.h"
 
 Value + <Int;>;
 
