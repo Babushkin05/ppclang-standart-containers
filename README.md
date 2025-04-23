@@ -2,7 +2,7 @@
 
 ## installation
 
-download ***ppscl_installer.run*** from a [last release](https://github.com/Babushkin05/ppclang-standart-containers/releases/tag/v1.0.2)
+download ***ppscl_installer.run*** from a [last release](https://github.com/Babushkin05/ppclang-standart-containers/releases/tag/v1.0.3)
 
 and run this commands:
 
