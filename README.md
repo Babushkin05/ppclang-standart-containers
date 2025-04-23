@@ -16,14 +16,23 @@ sudo ./ppscl_installer.run
 add this to ```CMakeLists.txt``` to link library to your project:
 
 ```cmake
-target_link_libraries(my_program PRIVATE
+find_library(CONTAINERS_LIB containers PATHS /usr/local/lib /path/to/your/lib)
+if(NOT CONTAINERS_LIB)
+    message(FATAL_ERROR "Containers library not found!")
+endif()
+
+# include headers
+target_include_directories(my_program PRIVATE /usr/local/include/)
+
+target_link_libraries(
+    my_program PRIVATE
     -Wl,--whole-archive
-    containers
+    ${CONTAINERS_LIB}
     -Wl,--no-whole-archive
 )
 ```
 
 
-## documentation in [/doc](/doc/)
+## documentation in [doc/](/doc/)
 
 ## [more about the procedural-parametric paradigm in general](http://www.softcraft.ru/ppp/)
