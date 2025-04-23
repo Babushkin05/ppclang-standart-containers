@@ -12,8 +12,10 @@
 ## Специализированные методы
 
 ```c
+// Computes hash value for integer
 unsigned int HashValue<Value.Int * value>();
 
+// Compares two integer values for equality
 _Bool ValueEqual<Value.Int *left, Value.Int *right>();
 ```
 

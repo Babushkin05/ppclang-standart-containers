@@ -24,8 +24,10 @@ Value + <Triangle;>;
 ## Обобщенные методы
 
 ```c
+// Computes hash value for integer
 unsigned int HashValue<Value * value>();
 
+// Compares two values for equality
 _Bool ValueEqual<Value *left, Value *right>();
 ```
 
