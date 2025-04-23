@@ -17,5 +17,3 @@
 * [List](./containers/list.md)
 * [HashMap](./containers/hashmap.md)
 * [HashSet](./containers/hashset.md)
-
-// пока пустые
