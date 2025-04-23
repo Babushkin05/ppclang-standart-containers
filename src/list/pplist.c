@@ -64,7 +64,6 @@ void ListPopBack(List *list) {
     list->tail->next = NULL;
   }
 
-  free(toRemove->val);
   free(toRemove);
   list->size--;
 }

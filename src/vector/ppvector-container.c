@@ -8,6 +8,11 @@ void InitContainerWithSize<Container.Vector * container>(size_t size) {
   InitVector(vector, size);
 }
 
+void InitContainer<Container.Vector * container>() {
+  Vector *vector = &(container->@);
+  InitVector(vector, 0);
+}
+
 void ClearContainer<Container.Vector * container>() {
   Vector *vector = &(container->@);
   ClearVector(vector);
@@ -26,6 +31,16 @@ void PushBackContainer<Container.Vector * container>(Value *val) {
 void PopBackContainer<Container.Vector * container>() {
   Vector *vector = &(container->@);
   VectorPopBack(vector);
+}
+
+Value *FrontContainer<Container.Vector * container>() {
+  Vector *vector = &(container->@);
+  return VectorFront(vector);
+}
+
+Value *BackContainer<Container.Vector * container>() {
+  Vector *vector = &(container->@);
+  return VectorBack(vector);
 }
 
 // --------------------------------------------
